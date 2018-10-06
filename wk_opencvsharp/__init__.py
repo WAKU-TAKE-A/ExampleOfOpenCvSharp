@@ -3,9 +3,8 @@
 """
 OpenCvSharp for IronPython.
 
-* 環境変数"IRONPYTHON_HOME"が必要です（IronPythonのインストール先を入力してください）
-* "OpenCvSharp.dll", "OpenCvSharp.Blob.dll", "OpenCvSharp.Extensions.dll", "OpenCvSharp.UserInterface.dll", "OpenCvSharp.Extensions.dll"を"__init__.py"と同じフォルダにコピーします
-
+* Environment variable 'IRONPYTHON_HOME' is required. It is the installation location of IronPython.
+* "OpenCvSharp.dll", "OpenCvSharp.Blob.dll", "OpenCvSharp.Extensions.dll", "OpenCvSharp.UserInterface.dll", "OpenCvSharp.Extensions.dll", "wk_util.dll" is required.
 """
 
 __author__  = "Nishida Takehito <takehito.nishida@gmail.com>"
