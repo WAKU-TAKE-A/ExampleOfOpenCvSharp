@@ -16,6 +16,7 @@ The library of C# is used.
 * Build.
 * Copy the `x64/debug/opencvsharp` or `x64/release/opencvsharp` folder to IronPython's `Lib` folder.
 * What is needed is only the `__init__.py`, the `dll` folder, `OpenCvSharp.Blob.dll`, `OpenCvSharp.dll`, `OpenCvSharp.Extensions.dll`, `OpenCvSharp.UserInterface.dll` and `wk_util.dll`.
+* Environment variable 'IRONPYTHON_HOME' is required. It is the installation location of IronPython.
 * `example.py` and `example.exe` are example program.
 
 ## about wk_util.dll
