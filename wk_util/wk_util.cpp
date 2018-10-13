@@ -24,6 +24,16 @@ void wk_util::Cv2Util::SetByteValue(Mat^ mat, int index, Byte value)
 	*(mat->DataPointer + index) = value;
 }
 
+void wk_util::Cv2Util::GrayscalePalette(Bitmap^ bmp)
+{
+	ColorPalette^ pal = bmp->Palette;
+
+	for (int i = 0; i < 256; i++)
+	{
+		pal->Entries[i] = Color::FromArgb(i, i, i);
+	}		
+}
+
 int wk_util::Cv2Util::SizeOfSbyte()
 {
 	return sizeof(System::SByte);
@@ -87,5 +97,37 @@ int wk_util::Cv2Util::SizeOfDecimal()
 int wk_util::Cv2Util::SizeOfBool()
 {
 	return sizeof(System::Boolean);
+}
+
+wk_util::LockBitmap::LockBitmap(System::Drawing::Bitmap^ ini)
+{
+	if (ini == nullptr)
+		return;
+
+	if (_src != nullptr)
+		this->Free();
+
+	_src = ini;
+	_w = _src->Width;
+	_h = _src->Height;
+	_pf = _src->PixelFormat;
+
+	System::Drawing::Rectangle rect = System::Drawing::Rectangle(0, 0, _w, _h);
+	_srcData = _src->LockBits(rect, System::Drawing::Imaging::ImageLockMode::ReadWrite, _pf);
+
+	_st = _srcData->Stride;
+	_ip = _srcData->Scan0;
+}
+
+void wk_util::LockBitmap::Free()
+{
+	if (_src == nullptr)
+		return;
+
+	_src->UnlockBits(_srcData);
+
+	_src = nullptr;
+	_w = _h = _st = 0;
+	_ip = IntPtr::Zero;
 }
 

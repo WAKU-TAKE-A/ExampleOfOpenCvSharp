@@ -4,9 +4,11 @@
 
 using namespace System;
 using namespace OpenCvSharp;
+using namespace System::Drawing;
+using namespace System::Drawing::Imaging;
 
-namespace wk_util {
-
+namespace wk_util
+{
 	public ref class Cv2Util
 	{
 	public:
@@ -14,6 +16,7 @@ namespace wk_util {
 		static void Memcopy(IntPtr src, IntPtr dst, int num);
 		static Byte GetByteValue(Mat^ mat, int index);
 		static void SetByteValue(Mat^ mat, int index, Byte value);
+		static void GrayscalePalette(Bitmap^ bmp);
 		static int SizeOfSbyte();
 		static int SizeOfByte();
 		static int SizeOfShort();
@@ -27,5 +30,30 @@ namespace wk_util {
 		static int SizeOfDouble();
 		static int SizeOfDecimal();
 		static int SizeOfBool();
+	};
+
+	public ref class LockBitmap
+	{
+	private:
+		System::Drawing::Bitmap^ _src;
+		System::Drawing::Imaging::BitmapData^ _srcData;
+		System::Drawing::Imaging::PixelFormat _pf;
+		int _w;
+		int _h;
+		int _st;
+		IntPtr _ip;
+
+	public:
+		LockBitmap(System::Drawing::Bitmap^ ini);
+
+		void Free();
+
+		property IntPtr Ptr
+		{
+			IntPtr get()
+			{
+				return _ip;
+			}
+		}
 	};
 }
