@@ -6,6 +6,7 @@ using namespace System;
 using namespace OpenCvSharp;
 using namespace System::Drawing;
 using namespace System::Drawing::Imaging;
+using namespace System::Windows::Threading;
 
 namespace wk_util
 {
@@ -30,6 +31,7 @@ namespace wk_util
 		static int SizeOfDouble();
 		static int SizeOfDecimal();
 		static int SizeOfBool();
+		static void DoEvents();
 	};
 
 	public ref class LockBitmap

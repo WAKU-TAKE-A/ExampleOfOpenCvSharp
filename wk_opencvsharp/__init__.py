@@ -8,8 +8,8 @@ OpenCvSharp for IronPython.
 """
 
 __author__  = "Nishida Takehito <takehito.nishida@gmail.com>"
-__version__ = "0.9.0.0"
-__date__    = "2018/10/03"
+__version__ = "0.9.1.0"
+__date__    = "2018/11/01"
 
 #
 # append path.

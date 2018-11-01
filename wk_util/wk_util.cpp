@@ -99,6 +99,22 @@ int wk_util::Cv2Util::SizeOfBool()
 	return sizeof(System::Boolean);
 }
 
+System::Object^ ExitFrames(System::Object^ obj)
+{
+	DispatcherFrame^ dis = (DispatcherFrame^)obj;
+	dis->Continue = false;
+	return nullptr;
+}
+
+void wk_util::Cv2Util::DoEvents()
+{
+	DispatcherFrame^ frame = gcnew DispatcherFrame();
+	DispatcherOperationCallback^ callback = gcnew DispatcherOperationCallback(ExitFrames);
+	Dispatcher^ dis_cur = Dispatcher::CurrentDispatcher;
+	dis_cur->BeginInvoke(DispatcherPriority::Background, callback, frame);
+	Dispatcher::PushFrame(frame);
+}
+
 wk_util::LockBitmap::LockBitmap(System::Drawing::Bitmap^ ini)
 {
 	if (ini == nullptr)
