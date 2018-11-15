@@ -50,9 +50,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(NativeDlls)\x86\OpenCvSharpExtern.dll" />
-    <None Include="$(NativeDlls)\x86\opencv_ffmpeg341.dll" />
-    <None Include="$(NativeDlls)\x64\OpenCvSharpExtern.dll" />
-    <None Include="$(NativeDlls)\x64\opencv_ffmpeg341_64.dll" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
