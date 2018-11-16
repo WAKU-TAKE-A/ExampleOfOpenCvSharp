@@ -13,6 +13,8 @@ The library of C# is used.
 
 * Open "wk_opencvsharp.sln".
 * Install "OpenCvSharp" with NuGet.
+  * Checked with version 1.3.4.1.20181108.
+  * To use another version, delete the reference. Again, add to reference of "OpenCvSharp.Blob.dll", "OpenCvSharp.dll", "OpenCvSharp.Extensions.dll" and OpenCvSharp.UserInterface.dll.
 * Build.
 * Copy the "x64/debug/opencvsharp" or "x64/release/opencvsharp" folder to IronPython's "Lib" folder.
 * Environment variable "IRONPYTHON_HOME" is required. It is the installation location of IronPython.
