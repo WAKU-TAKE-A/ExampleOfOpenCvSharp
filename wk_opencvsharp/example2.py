@@ -8,7 +8,7 @@ from opencvsharp import *
 
 def RunExample():
     # Bitmap -> Mat
-    fn = path.join(IRONPYTHON_OPENCVSHARP, "lena.jpg")
+    fn = path.join(IPY_OPENCVSHARP, "lena.jpg")
     bmp = Bitmap(fn)
     lck = LockBitmap(bmp)
     mt = Mat(bmp.Height, bmp.Width, OpenCvSharp.MatType.CV_8UC3, lck.Ptr)

@@ -8,7 +8,7 @@ from opencvsharp import *
 
 def RunExample():
     # Read an image from a file.
-    fn = path.join(IRONPYTHON_OPENCVSHARP, "lena.jpg")
+    fn = path.join(IPY_OPENCVSHARP, "lena.jpg")
     src = Cv2.ImRead(fn, OpenCvSharp.ImreadModes.Color)
     # Prepare the processed image.
     size = OpenCvSharp.Size(252, 256)
