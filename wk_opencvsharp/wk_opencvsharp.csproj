@@ -90,7 +90,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\wk_util\wk_util.vcxproj">
+    <ProjectReference Include="..\WkCv2Util\wk_util.vcxproj">
       <Project>{f1fc7eca-3232-43a7-afe7-7516edb895b9}</Project>
       <Name>wk_util</Name>
     </ProjectReference>
