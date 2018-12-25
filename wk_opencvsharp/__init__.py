@@ -49,11 +49,11 @@ clr.AddReferenceToFile("OpenCvSharp.dll")
 clr.AddReferenceToFile("OpenCvSharp.Blob.dll")
 clr.AddReferenceToFile("OpenCvSharp.Extensions.dll")
 clr.AddReferenceToFile("OpenCvSharp.UserInterface.dll")
-clr.AddReferenceToFile("WkCv2Util.dll")
+clr.AddReferenceToFile("wk_util_opencvsharp.dll")
 import OpenCvSharp
 from OpenCvSharp import Cv2
 from OpenCvSharp import Mat
-from WkUtil import Cv2Util
-from WkUtil import LockBitmap
+from wk_util_opencvsharp import Cv2Util
+from wk_util_opencvsharp import LockBitmap
 from System.Drawing import Bitmap
 from System.Drawing.Imaging import PixelFormat

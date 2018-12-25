@@ -11,7 +11,7 @@ using System.Windows.Forms;
 // user add
 using OpenCvSharp;
 using System.Drawing.Imaging;
-using WkUtil;
+using wk_util_opencvsharp;
 
 namespace wk_opencvsharp
 {

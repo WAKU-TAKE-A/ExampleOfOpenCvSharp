@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wk_opencvsharp", "wk_opencvsharp\wk_opencvsharp.csproj", "{CAE22FBB-5437-4AC3-A72A-E8B5791CCA79}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WkCv2Util", "WkCv2Util\wk_util.vcxproj", "{F1FC7ECA-3232-43A7-AFE7-7516EDB895B9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wk_util_opencvsharp", "wk_util_opencvsharp\wk_util_opencvsharp.vcxproj", "{F1FC7ECA-3232-43A7-AFE7-7516EDB895B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
