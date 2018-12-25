@@ -57,3 +57,5 @@ from wk_util_opencvsharp import Cv2Util
 from wk_util_opencvsharp import LockBitmap
 from System.Drawing import Bitmap
 from System.Drawing.Imaging import PixelFormat
+ToBitmap = OpenCvSharp.Extensions.BitmapConverter.ToBitmap
+ToMat = OpenCvSharp.Extensions.BitmapConverter.ToMat
