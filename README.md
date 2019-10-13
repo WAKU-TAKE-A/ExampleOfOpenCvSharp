@@ -12,9 +12,8 @@ The library of C# is used. Requires VisualStudio 2017 or higher.
 ## Notes on execution
 
 * Open "wk_opencvsharp.sln".
-* Install "OpenCvSharp" with NuGet.
-  * Checked with version 4.0.0.20181129.
-  * If you want to use another version, remove the references of "OpenCvSharp.Blob.dll", "OpenCvSharp.dll", "OpenCvSharp.Extensions.dll" and "OpenCvSharp.UserInterface.dll" , refer to them again.
+* Install "OpenCvSharp" with NuGet. In 2019/10/13, it is "OpenCvSharp4.Windows".
+* Add "OpenCvSharp.Blob.dll", "OpenCvSharp.dll", "OpenCvSharp.Extensions.dll" and "OpenCvSharp.UserInterface.dll" to the wk_util_opencvsharp reference.
 * Build.
 * Copy the "x64/debug/opencvsharp" or "x64/release/opencvsharp" folder to IronPython's "Lib" folder.
 * Environment variable "IRONPYTHON_HOME" is required. It is the installation location of IronPython.
