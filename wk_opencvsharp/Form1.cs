@@ -40,6 +40,10 @@ namespace wk_opencvsharp
             // Wait for key input.
             OpenCvSharp.Cv2.WaitKey(0);
 
+            // Dispose
+            src.Dispose();
+            dst.Dispose();
+
             Environment.Exit(0);
         }
     }

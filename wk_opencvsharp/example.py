@@ -21,6 +21,9 @@ def RunExample():
     Cv2.ImShow("dst", dst)
     # Wait for key input.
     Cv2.WaitKey(0)
+    # Dispose
+    src.Dispose()
+    dst.Dispose()
 
 if __name__ == '__main__':
     RunExample()

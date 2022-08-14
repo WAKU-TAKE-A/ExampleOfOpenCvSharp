@@ -13,7 +13,6 @@ namespace wk_util_opencvsharp
 	public ref class Cv2Util
 	{
 	public:
-		static IntPtr GetIntPtrFromMat(Mat^ mat);
 		static void Memcopy(IntPtr src, IntPtr dst, int num);
 		static Byte GetByteValue(Mat^ mat, int index);
 		static void SetByteValue(Mat^ mat, int index, Byte value);

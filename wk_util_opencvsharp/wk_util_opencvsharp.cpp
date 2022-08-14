@@ -4,11 +4,6 @@
 #include "wk_util_opencvsharp.h"
 #include <string.h>
 
-IntPtr wk_util_opencvsharp::Cv2Util::GetIntPtrFromMat(Mat^ mat)
-{
-	return (IntPtr)mat->DataPointer;
-}
-
 void wk_util_opencvsharp::Cv2Util::Memcopy(IntPtr src, IntPtr dst, int num)
 {
 	memcpy((void*)dst, (void*)src, num);
