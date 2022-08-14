@@ -27,7 +27,6 @@ example.RunExample()
 
 ## about wk_util_opencvsharp.dll
 * "wk_util_opencvsharp.dll" is C# functions.
-* `Mat.DataPointer` can not be used on IronPython. Use `Cv2Util.GetIntPtrFromMat(Mat)`.
 * To access the elements of Mat, use `Cv2Util.GetByteValue(Mat mat, int index)`.
 * To change to an element of Mat, please use `Cv2Util.SetByteValue(Mat mat, int index, Byte value)`.
 * `Cv2Util.Memcopy(IntPtr src, IntPtr dst, int size)` is memcpy. Be aware that src and dst are in reverse order of Memcpy.
