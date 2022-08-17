@@ -5,6 +5,8 @@ Example2 of OpenCvSharp (for 64bit)
 """
 
 from opencvsharp import *
+from OpenCvSharp import Vec3b
+from System import Int32
 
 def RunExample():
     # Bitmap -> Mat
@@ -23,9 +25,7 @@ def RunExample():
     print("The pixel value of [x, y] = [1, 0].")
     print(bmp2.GetPixel(1,0))
     print("Change the pixel value of Mat.")
-    Cv2Util.SetByteValue(mt2, 3, 255)
-    Cv2Util.SetByteValue(mt2, 4, 255)
-    Cv2Util.SetByteValue(mt2, 5, 255)
+    mt2.Set[Vec3b].Overloads[Int32, Int32, Vec3b](0, 1, Vec3b(255,255,255)) 
     print(bmp2.GetPixel(1,0))
     # Dispose
     mt.Dispose()

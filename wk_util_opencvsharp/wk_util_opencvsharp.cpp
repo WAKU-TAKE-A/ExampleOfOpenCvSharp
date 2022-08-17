@@ -9,16 +9,6 @@ void wk_util_opencvsharp::Cv2Util::Memcopy(IntPtr src, IntPtr dst, int num)
 	memcpy((void*)dst, (void*)src, num);
 }
 
-Byte wk_util_opencvsharp::Cv2Util::GetByteValue(Mat^ mat, int index)
-{
-	return *(mat->DataPointer + index);
-}
-
-void wk_util_opencvsharp::Cv2Util::SetByteValue(Mat^ mat, int index, Byte value)
-{
-	*(mat->DataPointer + index) = value;
-}
-
 void wk_util_opencvsharp::Cv2Util::GrayscalePalette(Bitmap^ bmp)
 {
 	ColorPalette^ pal = bmp->Palette;

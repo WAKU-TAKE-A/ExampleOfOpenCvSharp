@@ -4,12 +4,12 @@
 OpenCvSharp for IronPython.
 
 * Environment variable 'IRONPYTHON_HOME' is required. It is the installation location of IronPython.
-* "OpenCvSharp.dll", "OpenCvSharp.Blob.dll", "OpenCvSharp.Extensions.dll", "OpenCvSharp.UserInterface.dll", "OpenCvSharp.Extensions.dll", "wk_util.dll" is required.
+* "OpenCvSharp.dll", "OpenCvSharp.Extensions.dll", "wk_util_opencvsharp.dll" is required.
 """
 
 __author__  = "Nishida Takehito <takehito.nishida@gmail.com>"
-__version__ = "0.9.2.0"
-__date__    = "2018/11/17"
+__version__ = "0.9.3.0"
+__date__    = "2022/08/16"
 
 #
 # append path.
@@ -46,9 +46,7 @@ for i in _lstPath:
 import clr
 clr.AddReferenceByPartialName("System.Drawing")
 clr.AddReferenceToFile("OpenCvSharp.dll")
-clr.AddReferenceToFile("OpenCvSharp.Blob.dll")
 clr.AddReferenceToFile("OpenCvSharp.Extensions.dll")
-clr.AddReferenceToFile("OpenCvSharp.UserInterface.dll")
 clr.AddReferenceToFile("wk_util_opencvsharp.dll")
 import OpenCvSharp
 from OpenCvSharp import Cv2

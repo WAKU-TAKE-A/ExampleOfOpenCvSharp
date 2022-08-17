@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace wk_opencvsharp
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。

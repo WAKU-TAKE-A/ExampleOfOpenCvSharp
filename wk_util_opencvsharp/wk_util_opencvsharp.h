@@ -3,7 +3,6 @@
 #pragma once
 
 using namespace System;
-using namespace OpenCvSharp;
 using namespace System::Drawing;
 using namespace System::Drawing::Imaging;
 using namespace System::Windows::Threading;
@@ -14,8 +13,6 @@ namespace wk_util_opencvsharp
 	{
 	public:
 		static void Memcopy(IntPtr src, IntPtr dst, int num);
-		static Byte GetByteValue(Mat^ mat, int index);
-		static void SetByteValue(Mat^ mat, int index, Byte value);
 		static void GrayscalePalette(Bitmap^ bmp);
 		static int SizeOfSbyte();
 		static int SizeOfByte();
