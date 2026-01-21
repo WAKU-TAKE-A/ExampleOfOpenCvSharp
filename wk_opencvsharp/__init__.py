@@ -1,59 +1,79 @@
 # -*- coding: utf-8 -*-
 
 """
-OpenCvSharp for IronPython.
-
-* Environment variable 'IRONPYTHON_HOME' is required. It is the installation location of IronPython.
-* "OpenCvSharp.dll", "OpenCvSharp.Extensions.dll", "wk_util_opencvsharp.dll" is required.
+OpenCvSharp4 for IronPython (.NET 8.0)
 """
 
-__author__  = "Nishida Takehito <takehito.nishida@gmail.com>"
-__version__ = "0.9.3.0"
-__date__    = "2022/08/16"
+__author__  = "WAKU-TAKE-A <waku-take-a@ymail.ne.jp>"
+__version__ = "0.9.4.0"
+__date__    = "2026/01/21"
 
 #
 # append path.
 #
-import os
-import os.path as path
+from pathlib import Path
 from sys import path as systemPath
 from System import Environment as env
+
+DOTNET_SHARED = sorted(Path(r"C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App").glob("8.0.*"))[-1]
 IRONPYTHON_HOME = env.GetEnvironmentVariable("IRONPYTHON_HOME")
 
 if IRONPYTHON_HOME is None:
     raise Exception("Error : Set path of IRONPYTHON_HOME.")
 
-IPY_LIB = path.join(IRONPYTHON_HOME, "Lib")
-IPY_DLLS = path.join(IRONPYTHON_HOME, "DLLs")
-IPY_OPENCVSHARP = path.join(IRONPYTHON_HOME, "Lib\\opencvsharp")
-IPY_OPENCVSHARPDLL = path.join(IRONPYTHON_HOME, "Lib\\opencvsharp\\dll")
+CURRENT_DIR = Path(__file__).resolve().parent
+IRONPYTHON_HOME_PATH = Path(IRONPYTHON_HOME)
 
-_lstPath = []
-_lstPath.append(IPY_LIB)
-_lstPath.append(IPY_DLLS)
-_lstPath.append(IPY_OPENCVSHARP)
-_lstPath.append(IPY_OPENCVSHARPDLL)
+_lstPath = [
+    DOTNET_SHARED,
+    CURRENT_DIR,
+    IRONPYTHON_HOME_PATH / "Lib",
+    IRONPYTHON_HOME_PATH / "DLLs"
+]
 
 for i in _lstPath:
-    if os.path.exists(i):
-        systemPath.append(i)
-    else:
-        raise Exception("There is no '" + i + "'.")
+    if not i.exists():
+        raise FileNotFoundError("Required directory not found: {0}".format(i))
+    if str(i) not in systemPath:
+        systemPath.append(str(i))
+
+import os
+
+_native_dll_path = [
+    CURRENT_DIR,
+    CURRENT_DIR / "runtimes" / "win-x64" / "native",
+]
+
+for i in _native_dll_path:
+    if i.exists():
+        if str(i) not in os.environ['PATH']:
+            os.environ['PATH'] = str(i) + ";" + os.environ['PATH']
 
 #
 # Import modules.
 #
 import clr
-clr.AddReferenceByPartialName("System.Drawing")
-clr.AddReferenceToFile("OpenCvSharp.dll")
-clr.AddReferenceToFile("OpenCvSharp.Extensions.dll")
-clr.AddReferenceToFile("wk_util_opencvsharp.dll")
+
+dlls = [
+    DOTNET_SHARED / "System.Drawing.Common.dll",
+    DOTNET_SHARED / "Microsoft.Win32.SystemEvents.dll", 
+    CURRENT_DIR / "OpenCvSharp.dll",
+    CURRENT_DIR / "OpenCvSharp.Extensions.dll",
+    CURRENT_DIR / "wk_opencvsharp.dll"
+]
+
+for dll in dlls:
+    if dll.exists():
+        clr.AddReferenceToFileAndPath(str(dll))
+
 import OpenCvSharp
-from OpenCvSharp import Cv2
-from OpenCvSharp import Mat
-from wk_util_opencvsharp import Cv2Util
-from wk_util_opencvsharp import LockBitmap
+from OpenCvSharp import Cv2, Mat, Vec3b
+from wk_opencvsharp import Cv2Util, LockBitmap
 from System.Drawing import Bitmap
 from System.Drawing.Imaging import PixelFormat
+
 ToBitmap = OpenCvSharp.Extensions.BitmapConverter.ToBitmap
 ToMat = OpenCvSharp.Extensions.BitmapConverter.ToMat
+Memcopy = Cv2Util.Memcopy
+GrayscalePalette = Cv2Util.GrayscalePalette
+DoEvents = Cv2Util.DoEvents

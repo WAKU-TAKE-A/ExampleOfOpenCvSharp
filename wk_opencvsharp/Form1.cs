@@ -1,60 +1,66 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-// user add
-using System.Runtime.InteropServices;
 using OpenCvSharp;
-using OpenCvSharp.Extensions;
-using System.Drawing.Imaging;
 
 namespace wk_opencvsharp
 {
     public partial class Form1 : Form
     {
-        /// <summary>
-        /// OpenCvSharpのMemoryHelperが使えない時に利用してください。
-        /// </summary>
-        /// <param name="dst"></param>
-        /// <param name="src"></param>
-        /// <param name="count"></param>
-        [DllImport("kernel32.dll", EntryPoint = "CopyMemory", SetLastError = false)]
-        public static extern void CopyMemory(IntPtr dst, IntPtr src, uint count);
-
         public Form1()
         {
+            // コンストラクタは初期化のみに留めます
             InitializeComponent();
+        }
 
-            // Read an image from a file.
-            Mat src = Cv2.ImRead("lena.jpg");
+        /// <summary>
+        /// 画面ロード時に実行されるイベント。
+        /// ここであればデザイナーをクラッシュさせずに OpenCV の処理を実行できます。
+        /// </summary>
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
 
-            // Prepare the processed image.
-            OpenCvSharp.Size size = new OpenCvSharp.Size(src.Cols, src.Rows);
-            Mat dst = new Mat(size, MatType.CV_8UC3);
+            // デザインモード（Visual Studio 上での表示時）は実行しない
+            if (this.DesignMode || System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            {
+                return;
+            }
 
-            // Run Sobel filter.
+            try
+            {
+                RunImageProcessing();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private void RunImageProcessing()
+        {
+            // 画像の読み込み
+            using Mat src = Cv2.ImRead("./examples/lena.jpg");
+            if (src.Empty())
+            {
+                MessageBox.Show("Image 'lena.jpg' not found in output directory.");
+                return;
+            }
+
+            // 処理後画像の準備
+            using Mat dst = new Mat(new OpenCvSharp.Size(src.Cols, src.Rows), src.Type());
+
+            // Sobelフィルタの適用
             Cv2.Sobel(src, dst, src.Depth(), 1, 1);
 
-            // Display the original image.
-            Cv2.ImShow("src", src);
+            // 表示
+            Cv2.ImShow("Original Source", src);
+            Cv2.ImShow("Processed Destination", dst);
 
-            // Display the processed image.
-            Cv2.ImShow("dst", dst);           
-
-            // Wait for key input.
+            // キー入力待機
             Cv2.WaitKey(0);
 
-            // Dispose
-            src.Dispose();
-            dst.Dispose();
-
-            Environment.Exit(0);
+            Application.Exit();
         }
     }
 }
